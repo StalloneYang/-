@@ -1,0 +1,12 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+点击服务类合同菜单
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[1]/div/ul/li[1]/a
+
+点击添加合同按钮
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[2]/div[1]/div/a[1]
+
+点击导出按钮
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[2]/div[1]/div/a[2]

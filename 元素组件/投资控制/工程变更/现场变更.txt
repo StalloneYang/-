@@ -1,0 +1,41 @@
+*** Keywords ***
+施工进入现场变更
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881955683094901568bdc378e000e']/a/span    #投资控制
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881955683094901568bdcd6cf0010']/a/span    #工程变更
+    Wait Until Page Contains    目录五    20
+    Click Element    xpath=//div[@id='appBody']/div/div/div/div/ul/li[2]/a    #现场变更
+    Wait Until Page Contains    求是大厦西座地基合同    20    #等待
+
+发起现场变更
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[2]/div[1]/div/button[1]    #发起现场变更
+    Sleep    1
+    select window    url=http://org.10333.com/#/formFile/bg?contractId=402881955945a4620159825793b90039&qyCompanyId=40288195596dc52f0159824e6c7c0102&qyCompanyName=%E6%B7%B1%E5%9C%B3%E4%B8%AD%E5%BB%BA%E4%BA%8C%E5%B1%80%E6%96%BD%E5%B7%A5%E5%8D%95%E4%BD%8D
+    Comment    select window    name=智慧工程[2]
+    Wait Until Page Contains    表C.0.2工程变更单    20
+
+填写现场变更表
+    [Arguments]    ${yuanyin}=深圳雾霾且下雨等天气的    ${sy}=求是大厦西坐地基需延期至2018年12月份，并增加工资    ${gcje}=251    ${gqje}=22    # ${yuanyin}= 输入原因|${sy}=输入工程变更|${gcje}=输入工程增减的申请数额 | ${gqje}=输入工期变化的申请数额
+    Input Text    xpath=.//*[@id='appBody']/div[2]/div/div/table[1]/tbody/tr[2]/td[2]/textarea    ${yuanyin}    #输入原因    #深圳雾霾且下雨等天气的 求是大厦西坐地基需延期至2018年12月份，并增加工资
+    Input Text    xpath=.//*[@id='appBody']/div[2]/div/div/table[1]/tbody/tr[3]/td[2]/textarea    ${sy}    #输入工程变更    #求是大厦西坐地基需延期至2018年12月份，并增加工资
+    Select Checkbox    xpath=.//*[@id='appBody']/div[2]/div/div/table[1]/tbody/tr[4]/td[2]/div/label[1]/input    #勾选附件
+    Input Text    xpath=.//*[@id='JColResizer0']/tbody/tr[2]/td[2]/input    ${gcje}    #输入工程量增/减的申请数额
+    Input Text    xpath=.//*[@id='JColResizer0']/tbody/tr[3]/td[2]/input    ${gqje}    #输入工期变化的申请数额
+    Sleep    1
+
+提交
+    Click Element    xpath=.//*[@id='appBody']/div[3]/div[2]/div[2]/div[1]/button    #提交
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/ul/li[1]/h3/span    #点击监理单位
+    Comment    Click Element    xpath=//span[@text()='深圳博威监理企业']    #点击监理单位
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/ul/li[1]/ul/li/h3/span    #点击晓峰
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/div[1]/a/span    #选择晓峰
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[3]/button[2]    #点击确定
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[3]/button[2]    #点击确定
+    Sleep    1
+    select window

@@ -1,0 +1,21 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+打开浏览器
+    Set Log Level    TRACE
+    open browser    https://account.10333.com/dotoyo/login?service=http%3A%2F%2Fent.10333.com%2F%2Fblog%2Fspace    ff
+    Maximize Browser Window
+
+登录
+    [Arguments]    ${userName}    ${password}
+    inputtext    id=userName    ${userName}
+    inputtext    id=password    ${password}
+    Click Button    xpath=.//*[@id='fm1']/ul/li[3]/section/input[4]
+    Sleep    2
+    Click Element    xpath=//*[@id="app"]/div/div/div[5]/div/div[4]/a[1]
+
+退出
+    Sleep    2
+    Click Element    xpath=//*[@id="app"]/div/div[1]/div/div[2]/div[1]/ul/li[4]/a
+    Close All Browsers

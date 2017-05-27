@@ -1,0 +1,227 @@
+*** Settings ***
+Test Setup
+Test Teardown
+Resource          ../../业务组件/登录.txt
+Library           Selenium2Library
+Resource          ../../业务组件/投资控制yw/工程变更yw.txt
+
+*** Test Cases ***
+testCase01
+    Set Log Level    TRACE
+    open browser    https://account.10333.com/dotoyo/login?service=http%3A%2F%2Fent.10333.com%2F%2Fblog%2Fspace    GC
+    Maximize Browser Window
+    inputtext    id=userName    xiaofeng
+    inputtext    id=password    88888888
+    Click Button    xpath=.//*[@id='fm1']/ul/li[3]/section/input[4]
+    Click Element    xpath=//*[@id="app"]/div/div[5]/div/div[4]/a[1]
+    Sleep    2
+    Click Element    xpath=.//*[@id='app']/div/div[1]/div/div[2]/div[1]/ul/li[4]/a
+
+合同testCase02
+    正常登录    xiaoye    88888888
+    Sleep    1
+    Click Element    xpath=//*[@id="402881955669629b01566ce335a90140"]/a/span
+    Sleep    1
+    Click Element    xpath=//*[@id="402881955669629b015674b29baa0967"]/a/span
+    Sleep    1
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[2]/div[1]/div/a[1]
+    Sleep    1
+    Comment    Click Element    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[1]/div/select    #选择合同下拉框
+    Sleep    1
+    Click Element    xpath=//*[@id="appBody"]/div/div/div[2]/div[2]/div/div[1]/div/select/option[2]    #选择合同下拉框
+    Comment    Press Key    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[1]/div/select    \ue015    #键盘向下键
+    Comment    Sleep    1
+    Comment    Press Key    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[1]/div/select    \\13    #键盘enter建
+    Comment    Sleep    1
+    Comment    Select from List    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[1]/div/select
+    Comment    Sleep    1
+    Comment    Select From List By Value    value=JL    #xpath=//w_60/w_60//div[text()='监理服务合同'] \
+    Input Text    xpath=.//*[@id='appBody']/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/div/div/span/input    监理    #签约单位
+    sleep    5
+    Press Key    xpath=.//*[@id='appBody']/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/div/div/span/input    \ue015    #键盘向下键
+    Input Text    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[4]/div/input    求是大尚    #合同名称
+    Input Text    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[5]/div/input    sz54545    #合同编号
+    Input Text    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[6]/div/input    求是大尚工程名称    #工程名称
+    Input Text    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[11]/div/input    234234    #合同金额（万元）
+    Comment    Click Element    xpath=.//*[@id='appBody']/div[1]/div/div[2]/div[2]/div/div[12]/div/div/div/div/input    #点击合同签订日期
+    Comment    sleep    5
+    Comment    Click Element    xpath=//*[@id="appBody"]/div[2]/div/table/tbody/tr[2]/td[5]    #选择日期
+    Comment    sleep    5
+    Comment    Click Element    xpath=//*[@id="appBody"]/div[1]/div/div[2]/div[2]/div/div[13]/div/div[1]/div/div/input
+    Comment    sleep    5
+    Comment    Click Element    xpath=//*[@id="appBody"]/div[2]/div/table/tbody/tr[3]/td[4]
+    sleep    5
+    Execute Javascript    Javascript window.document.getEltementByName('signDate').readonly=false
+    sleep    5
+    Execute Javascript    Javascript window.document.getEltementById('signDate').value='2017-11-12'
+    sleep    5
+    Click Element    xpath=.//*[@id='rt_rt_1bbdnfklks5q1nfs1a90ru1v404']/label    #选择上传
+    sleep    5
+
+合同testCase03
+    正常登录    xiaoye    88888888
+    Sleep    1
+    Click Element    xpath=//*[@id="402881955669629b01566ce335a90140"]/a/span    #合同管理
+    Sleep    1
+    Click Element    xpath=//*[@id="402881955669629b015674b29baa0967"]/a/span    #合同台账
+    Sleep    1
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[2]/div[1]/div/a[1]    #添加合同
+    Sleep    1
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[1]/div/select    #选择合同下拉框
+    Sleep    1
+    Comment    Click Element    xpath=//*[@id="appBody"]/div/div/div[2]/div[2]/div/div[1]/div/select/option[2]    #选择合同下拉框    #可实现
+    Comment    Press Key    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[1]/div/select    \ue015    #键盘向下键
+    Comment    Sleep    1
+    Comment    Press Key    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[1]/div/select    \\13    #键盘enter建
+    Comment    Sleep    1
+    Select from List    xpath=//*[@id="appBody"]/div/div/div[2]/div[2]/div/div[1]/div/select    监理服务合同    #选择监理服务合同
+    Sleep    5
+    Comment    Select From List By Value    value=JL    #xpath=//w_60/w_60//div[text()='监理服务合同'] \
+    Input Text    xpath=.//*[@id='appBody']/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/div/div/span/input    监理    #签约单位
+    sleep    5
+    Press Key    xpath=.//*[@id='appBody']/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/div/div/div/span/input    \ue015    #键盘向下键
+    Input Text    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[6]/div/input    求是大尚    #合同名称
+    Input Text    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[7]/div/input    sz54545    #合同编号
+    Input Text    xpath=.//*[@id='appBody']/div/div/div[2]/div[2]/div/div[8]/div/input    求是大尚工程名称    #工程名称
+    Comment    Click Element    xpath=.//*[@id='appBody']/div[1]/div/div[2]/div[2]/div/div[12]/div/div/div/div/input    #点击合同签订日期
+    Comment    sleep    5
+    Comment    Click Element    xpath=//*[@id="appBody"]/div[2]/div/table/tbody/tr[2]/td[5]    #选择日期
+    Comment    sleep    5
+    Comment    Click Element    xpath=//*[@id="appBody"]/div[1]/div/div[2]/div[2]/div/div[13]/div/div[1]/div/div/input
+    Comment    sleep    5
+    Comment    Click Element    xpath=//*[@id="appBody"]/div[2]/div/table/tbody/tr[3]/td[4]
+    sleep    3
+    choose file    xpath=(//input[@name='file'])[2]    D:\\Documents\\Pictures\\165922539684125565.jpg    #选择上传
+    sleep    5
+
+现场变更单testCase01
+    [Documentation]    施工总包发起现场变更
+    正常登录    xiaoshi    88888888
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881955683094901568bdc378e000e']/a/span    #投资控制
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881955683094901568bdcd6cf0010']/a/span    #工程变更
+    Wait Until Page Contains    目录五    20
+    Click Element    xpath=//div[@id='appBody']/div/div/div/div/ul/li[2]/a    #现场变更
+    Wait Until Page Contains    求是大厦西座地基合同    20
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[2]/div[1]/div/button[1]    #发起现场变更
+    Sleep    1
+    select window    url=http://org.10333.com/#/formFile/bg?contractId=402881955945a4620159825793b90039&qyCompanyId=40288195596dc52f0159824e6c7c0102&qyCompanyName=%E6%B7%B1%E5%9C%B3%E4%B8%AD%E5%BB%BA%E4%BA%8C%E5%B1%80%E6%96%BD%E5%B7%A5%E5%8D%95%E4%BD%8D
+    Comment    select window    name=智慧工程[2]
+    Wait Until Page Contains    表C.0.2工程变更单    20
+    Input Text    xpath=.//*[@id='appBody']/div[2]/div/div/table[1]/tbody/tr[2]/td[2]/textarea    深圳雾霾且下雨等天气的    #输入原因
+    Input Text    xpath=.//*[@id='appBody']/div[2]/div/div/table[1]/tbody/tr[3]/td[2]/textarea    求是大厦西坐地基需延期至2018年12月份，并增加工资    #输入工程变更
+    Select Checkbox    xpath=.//*[@id='appBody']/div[2]/div/div/table[1]/tbody/tr[4]/td[2]/div/label[1]/input    #勾选附件
+    Input Text    xpath=.//*[@id='JColResizer0']/tbody/tr[2]/td[2]/input    3311    #输入工程量增/减的申请数额
+    Input Text    xpath=.//*[@id='JColResizer0']/tbody/tr[3]/td[2]/input    4411    #输入工期变化的申请数额
+    Sleep    1
+    Click Element    xpath=.//*[@id='appBody']/div[3]/div[2]/div[2]/div[1]/button    #提交
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/ul/li[1]/h3/span    #点击监理单位
+    Comment    Click Element    xpath=//span[@text()='深圳博威监理企业']    #点击监理单位
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/ul/li[1]/ul/li/h3/span    #点击晓峰
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/div[1]/a/span    #选择晓峰
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[3]/button[2]    #点击确定
+    Sleep    1
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div/div[3]/button[2]    #点击确定
+    Sleep    1
+    select window
+    Comment    Click Element    xpath=.//*[@id='402881955683094901568bdcd6cf0010']/a/span    #刷新
+    Sleep    3
+    退出
+    登录.正常登录    xiaofeng    88888888    #登录监理账号
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881955669629b015669a07ab70046']/a/span    #投资控制
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881f25893f1c80158941c764f0003']/a/span    #工程变更
+    Sleep    3
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[1]/div[1]/ul/li[2]/a    #现场变更
+    Wait Until Page Contains    求是大厦西座地基合同    20
+    Click Element    xpath=(//a[contains(text(),'办理')])[1]    #点击办理第一条现场签证
+    ${url}    Get Element Attribute    xpath=(//a[contains(text(),'办理')])[1]@href
+    select window    url=${url}    #选择新页签
+    Wait Until Page Contains    表C.0.2工程变更单    20
+    Input Text    xpath=.//*[@id='JColResizer0']/tbody/tr[2]/td[3]/input    34411    #输入工程量增/减的审核数额
+    Input Text    xpath=.//*[@id='JColResizer0']/tbody/tr[3]/td[3]/input    33311    #输入工期变化的审核数额
+    Sleep    1
+    Click Element    xpath=.//*[@id='appBody']/div[3]/div[2]/div[3]/div[1]/button    #点击转办
+    Sleep    1
+    Click Element    xpath=html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/ul/li[1]/h3/span    #点击业主单位
+    Comment    Click Element    xpath=//span[@text()='深圳博威监理企业']    #点击监理单位
+    Sleep    1
+    Click Element    xpath=html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/ul/li[1]/ul/li/h3/span    #点击小业
+    Sleep    1
+    Click Element    xpath=html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/div[1]/a/span    #选择小业
+    Sleep    1
+    Click Element    xpath=html/body/div[2]/div/div[2]/div/div[3]/button[2]    #点击确定
+    Sleep    1
+    Click Element    xpath=html/body/div[2]/div/div[2]/div/div[3]/button[2]    #点击确定
+    Sleep    4
+    select window
+    退出
+    登录.正常登录    xiaoye    88888888    #登录业主账号
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881955683094901568bde39780015']/a/span    #投资控制
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881955683094901568bdec1b40018']/a/span    #工程变更
+    Sleep    3
+    Click Element    xpath=.//*[@id='appBody']/div/div/div[1]/div[1]/ul/li[2]/a    #现场变更
+    Wait Until Page Contains    求是大厦西座地基合同    20
+    Click Element    xpath=(//a[contains(text(),'办理')])[1]    #点击办理第一条现场签证
+    ${url}    Get Element Attribute    xpath=(//a[contains(text(),'办理')])[1]@href    #获取url
+    select window    url=${url}    #选择新页签
+    Wait Until Page Contains    表C.0.2工程变更单    20
+    Sleep    1
+    Click Element    xpath=.//*[@id='appBody']/div[3]/div[2]/div[3]/div[3]/button    #点击结束并转发起人
+    Sleep    1
+    Click Element    xpath=html/body/div[2]/div/div[2]/div/div[3]/button[2]    #点击确定
+    Sleep    4
+    select window
+    退出
+    正常登录    xiaoshi    88888888    #重新登录施工账号进行办结文件
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881955683094901568bdc378e000e']/a/span    #投资控制
+    Sleep    1
+    Click Element    xpath=.//*[@id='402881955683094901568bdcd6cf0010']/a/span    #工程变更
+    Wait Until Page Contains    目录五    20
+    Click Element    xpath=//div[@id='appBody']/div/div/div/div/ul/li[2]/a    #现场变更
+    Wait Until Page Contains    求是大厦西座地基合同    20
+    Click Element    xpath=(//a[contains(text(),'办理')])[1]    #点击办理第一条现场签证
+    ${url}    Get Element Attribute    xpath=(//a[contains(text(),'办理')])[1]@href    #获取URL
+    select window    url=${url}    #选择新页签
+    Wait Until Page Contains    表C.0.2工程变更单    20
+    Sleep    1
+    Click Element    xpath=.//*[@id='appBody']/div[3]/div[2]/div[2]/div[2]/button    #点击办结
+    Sleep    1
+    Click Element    xpath=html/body/div[2]/div/div[2]/div/div[3]/button[2]    #点击确定
+    Sleep    4
+    select window
+    退出
+    :for
+
+Get New Window Handle
+    @{new_handles1}    Get Window Identifiers
+    @{new_handles2}    Get Window Names
+    @{new_handles3}    @{new_handles4}    Get Window Position
+    @{new_handles5}    @{new_handles6}    Get Window Size
+    @{new_handles7}    Get Window Titles
+
+testcast04
+    登录.正常登录    xiaoshi    88888888
+    正常发起变更单
+    退出
+
+iftestcast05
+    inputtext    id=userName    ${userName}
+    inputtext    id=password    ${password}
+    Click Button    xpath=.//*[@id='fm1']/ul/li[3]/section/input[4]
+    Sleep    2
+    Return From Keyword If
+    Run Keyword If
+    Click Element    xpath=//*[@id="app"]/div/div/div[5]/div/div[4]/a[1]
+    Sleep    2
+    Click Element    xpath=//*[@id="app"]/div/div[1]/div/div[2]/div[1]/ul/li[4]/a
+    Close All Browsers

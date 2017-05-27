@@ -1,0 +1,9 @@
+*** Settings ***
+Resource          ../元素组件/登录.txt
+
+*** Keywords ***
+正常登录
+    [Arguments]    ${userName}    ${password}
+    打开浏览器
+    登录    ${userName}    ${password}
+    Comment    Set Selenium Speed    1seconds
