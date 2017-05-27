@@ -25,7 +25,7 @@
     Input Text    xpath=.//*[@id='email']    23423423@qq.com    #填写邮箱
     Input Text    xpath=.//*[@id='fax']    0755-7478498    #填写传真
     Input Text    xpath=.//*[@id='superManagerName']    杨大大    #填写企业管理员
-    Input Text    xpath=.//*[@id='mobilePhone']    ${mobilePhone}    #填写管理员手机号    13713256525
+    Input Text    xpath=.//*[@id='mobilePhone']    ${mobilePhone}    #填写管理员手机号    13756589654
     Select Checkbox    xpath=.//*[@id='codeType2']    #点击营业执照注册号
     Input Text    xpath=.//*[@id='licenseNumber']    ${licenseNumber}    #营业执照注册号    123564589654565
     Choose File    name=file    D:\\Documents\\Pictures\\QQ20170519100427.jpg    #D:\\Documents\\Pictures\\QQ20170519100427.jpg

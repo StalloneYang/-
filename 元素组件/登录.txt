@@ -8,15 +8,19 @@ Library           Selenium2Library
     Maximize Browser Window
 
 前台登录
-    [Arguments]    ${userName}    ${password}
+    [Arguments]    ${userName}    ${password}    ${browser}
     Set Log Level    TRACE
-    open browser    https://account.10333.com/dotoyo/login?service=http%3A%2F%2Fent.10333.com%2F%2Fblog%2Fspace    ff
+    open browser    https://cslogin.10333.com/dotoyo/login?service=http%3A%2F%2Fcsqy.10333.com%2Fblog%2Fspace    ${browser}
     Maximize Browser Window
-    inputtext    id=userName    ${userName}
-    inputtext    id=password    ${password}
+    inputtext    xpath=.//*[@id='userName']    ${userName}
+    inputtext    xpath=.//*[@id='password']    ${password}
     Click Button    xpath=.//*[@id='fm1']/ul/li[3]/section/input[4]
     Sleep    2
-    Click Element    xpath=//*[@id="app"]/div/div/div[5]/div/div[4]/a[1]
+    Comment    Click Element    xpath=//*[@id="app"]/div/div/div[7]/div/div[4]/a[1]
+    Run Keyword If    "${browser}"=="ie"    log    IE浏览器
+    ...    ELSE    Click Element    xpath=//*[@id="app"]/div/div/div[7]/div/div[4]/a[1]
+    Comment    ...
+    ...    ELSE IF    "${browser}"=="ff"    Click Element    xpath=//*[@id="app"]/div/div/div[7]/div/div[4]/a[1]
 
 退出
     Sleep    2
@@ -30,6 +34,6 @@ Library           Selenium2Library
     Maximize Browser Window
     inputtext    xpath=.//*[@id='j_username']    ${userName}
     inputtext    xpath=.//*[@id='j_password']    ${password}
-    Sleep    7
+    Sleep    7    #登录验证码需手动填写
     Click Button    xpath=.//*[@id='btn_submit']
     Sleep    2

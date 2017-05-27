@@ -3,7 +3,7 @@ Resource          ../元素组件/登录.txt
 
 *** Keywords ***
 正常登录
-    [Arguments]    ${userName}    ${password}
+    [Arguments]    ${userName}    ${password}    ${browser}
     打开浏览器
-    前台登录    ${userName}    ${password}
+    前台登录    ${userName}    ${password}    ${browser}
     Comment    Set Selenium Speed    1seconds
