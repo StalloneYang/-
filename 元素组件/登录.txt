@@ -7,8 +7,11 @@ Library           Selenium2Library
     open browser    https://account.10333.com/dotoyo/login?service=http%3A%2F%2Fent.10333.com%2F%2Fblog%2Fspace    ff
     Maximize Browser Window
 
-登录
+前台登录
     [Arguments]    ${userName}    ${password}
+    Set Log Level    TRACE
+    open browser    https://account.10333.com/dotoyo/login?service=http%3A%2F%2Fent.10333.com%2F%2Fblog%2Fspace    ff
+    Maximize Browser Window
     inputtext    id=userName    ${userName}
     inputtext    id=password    ${password}
     Click Button    xpath=.//*[@id='fm1']/ul/li[3]/section/input[4]
@@ -19,3 +22,14 @@ Library           Selenium2Library
     Sleep    2
     Click Element    xpath=//*[@id="app"]/div/div[1]/div/div[2]/div[1]/ul/li[4]/a
     Close All Browsers
+
+后台登录
+    [Arguments]    ${userName}    ${password}
+    Set Log Level    TRACE
+    open browser    http://cssys.10333.com/    ff
+    Maximize Browser Window
+    inputtext    xpath=.//*[@id='j_username']    ${userName}
+    inputtext    xpath=.//*[@id='j_password']    ${password}
+    Sleep    7
+    Click Button    xpath=.//*[@id='btn_submit']
+    Sleep    2

@@ -1,0 +1,36 @@
+*** Keywords ***
+填写企业信息
+    [Arguments]    ${compName}    ${mobilePhone}    ${licenseNumber}
+    Select Frame    id=iframe
+    Select Frame    name=leftFrame
+    Sleep    1
+    Click Element    xpath=.//*[@id='J_navlist']/li[3]/h4    #点击企业管理
+    Click Element    xpath=.//*[@id='J_navlist']/li[3]/div/p/a    #点击企业列表
+    Unselect Frame
+    Sleep    1
+    Select Frame    id=iframe
+    Select Frame    id=mainFrame
+    Sleep    1
+    Click Element    xpath=.//*[@id='searchForm']/div[1]/input    #点击新增按钮
+    Click Element    xpath=.//*[@id='build1']    #点击是建设单位
+    Input Text    xpath=.//*[@id='name']    ${compName}    #填写企业名称    深圳大尚网络技术有限公司
+    Comment    Click Element    xpath=.//*[@id='zzTypeCheck']    #点击企业验证    #自动化不验证
+    Input Text    xpath=.//*[@id='abbName']    大尚网络测试    #填写企业简称
+    Select From List    xpath=.//*[@id='provinceId']    广东省    #选择省
+    Select From List    xpath=.//*[@id='cityId']    深圳市    #选择市
+    Select From List    xpath=.//*[@id='districtId']    福田区    #选择区
+    Input Text    xpath=.//*[@id='address']    竹子林求是大厦    #填写详细地址
+    Input Text    xpath=.//*[@id='legalRepresentative']    杨大大    #填写法人代表
+    Input Text    xpath=.//*[@id='tel']    0755-4894964    #填写企业联系电话    0755-4894964
+    Input Text    xpath=.//*[@id='email']    23423423@qq.com    #填写邮箱
+    Input Text    xpath=.//*[@id='fax']    0755-7478498    #填写传真
+    Input Text    xpath=.//*[@id='superManagerName']    杨大大    #填写企业管理员
+    Input Text    xpath=.//*[@id='mobilePhone']    ${mobilePhone}    #填写管理员手机号    13713256525
+    Select Checkbox    xpath=.//*[@id='codeType2']    #点击营业执照注册号
+    Input Text    xpath=.//*[@id='licenseNumber']    ${licenseNumber}    #营业执照注册号    123564589654565
+    Choose File    name=file    D:\\Documents\\Pictures\\QQ20170519100427.jpg    #D:\\Documents\\Pictures\\QQ20170519100427.jpg
+    sleep    3
+    Click Button    xpath=.//*[@id='submitBtn']
+    sleep    2
+    Confirm Action
+    sleep    2

@@ -1,0 +1,7 @@
+*** Settings ***
+Resource          ../../元素组件/运营后台/企业管理元素.txt
+
+*** Keywords ***
+填写企业信息
+    [Arguments]    ${compName}    ${mobilePhone}    ${licenseNumber}
+    企业管理元素.填写企业信息    ${compName}     ${mobilePhone}    ${licenseNumber}
